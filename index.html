@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a2e4b'/><text x='50' y='65' font-size='42' font-weight='bold' text-anchor='middle' fill='%23b68b5c' font-family='Arial'>ID</text></svg>" />
     <title>Ibrahim Sohail Dar · Accounting & AI Consulting</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -38,7 +40,7 @@
 
         body {
             font-family: var(--font);
-            background: var(--bg);
+                  background: var(--card-bg);
             color: var(--text-dark);
             line-height: 1.6;
             min-height: 100vh;
@@ -48,7 +50,7 @@
         }
 
         .main-wrapper {
-            max-width: 2200px;
+            max-width: 1600px;
             width: 100%;
             background: var(--card-bg);
             border-radius: var(--radius);
@@ -666,6 +668,29 @@
             </div>
         </section>
 
+        <!-- ========== SERVICES (Core) ========== -->
+        <section aria-labelledby="services-heading">
+            <h2 id="services-heading">Core Services</h2>
+            <div class="card-grid">
+                <div class="card"><i class="fas fa-file-invoice" aria-hidden="true"></i>
+                    <h3 id="srv1">Financial Reporting</h3>
+                    <p id="srv1-d">IFRS-compliant statements &amp; performance analysis.</p>
+                </div>
+                <div class="card"><i class="fas fa-balance-scale" aria-hidden="true"></i>
+                    <h3 id="srv2">Compliance &amp; Audit</h3>
+                    <p id="srv2-d">ZATCA / VAT, statutory audit &amp; internal controls.</p>
+                </div>
+                <div class="card"><i class="fas fa-chart-line" aria-hidden="true"></i>
+                    <h3 id="srv3">Strategic Advisory</h3>
+                    <p id="srv3-d">Budgeting, forecasting &amp; financial modelling.</p>
+                </div>
+                <div class="card"><i class="fas fa-handshake" aria-hidden="true"></i>
+                    <h3 id="srv4">Business Setup</h3>
+                    <p id="srv4-d">Entity formation &amp; financial structuring in KSA.</p>
+                </div>
+            </div>
+        </section>
+
         <!-- ========== CONSULTING HIGHLIGHT (AnotherAI Platform) ========== -->
         <section aria-labelledby="consulting-heading">
             <h2 id="consulting-heading">Consulting &amp; Advisory</h2>
@@ -681,7 +706,7 @@
                 </div>
                 <a href="https://anotheraiplatform.com/team" target="_blank" rel="noopener noreferrer" class="cta-small"
                     id="consult-link">
-                    <span id="consult-btn-text">View Team Page →</span>
+                    <span id="consult-btn-text">View Company Page →</span>
                 </a>
             </div>
         </section>
@@ -771,28 +796,7 @@
             </div>
         </section>
 
-        <!-- ========== SERVICES (Core) ========== -->
-        <section aria-labelledby="services-heading">
-            <h2 id="services-heading">Core Services</h2>
-            <div class="card-grid">
-                <div class="card"><i class="fas fa-file-invoice" aria-hidden="true"></i>
-                    <h3 id="srv1">Financial Reporting</h3>
-                    <p id="srv1-d">IFRS-compliant statements &amp; performance analysis.</p>
-                </div>
-                <div class="card"><i class="fas fa-balance-scale" aria-hidden="true"></i>
-                    <h3 id="srv2">Compliance &amp; Audit</h3>
-                    <p id="srv2-d">ZATCA / VAT, statutory audit &amp; internal controls.</p>
-                </div>
-                <div class="card"><i class="fas fa-chart-line" aria-hidden="true"></i>
-                    <h3 id="srv3">Strategic Advisory</h3>
-                    <p id="srv3-d">Budgeting, forecasting &amp; financial modelling.</p>
-                </div>
-                <div class="card"><i class="fas fa-handshake" aria-hidden="true"></i>
-                    <h3 id="srv4">Business Setup</h3>
-                    <p id="srv4-d">Entity formation &amp; financial structuring in KSA.</p>
-                </div>
-            </div>
-        </section>
+
 
         <!-- ========== CONTACT / CTA ========== -->
         <section aria-labelledby="contact-heading">
@@ -841,7 +845,7 @@
                 'consulting-heading': { en: 'Consulting & Advisory', ar: 'الاستشارات والإرشاد' },
                 'consult-title': { en: 'AI Business Advisor · AnotherAI Platform', ar: 'مستشار أعمال الذكاء الاصطناعي · منصة AnotherAI' },
                 'consult-desc': { en: 'Guiding the strategic direction of AnotherAI — a cutting-edge AI platform — with financial & operational expertise. Ibrahim\'s insights help shape the product roadmap and go-to-market strategy.', ar: 'توجيه الاتجاه الاستراتيجي لمنصة AnotherAI — منصة ذكاء اصطناعي متطورة — بخبرة مالية وتشغيلية. تساعد رؤى إبراهيم في تشكيل خارطة طريق المنتج واستراتيجية دخول السوق.' },
-                'consult-btn-text': { en: 'View Team Page →', ar: 'عرض صفحة الفريق ←' },
+                'consult-btn-text': { en: 'View Company Page →', ar: 'عرض صفحة الشركة ←' },
                 'exp-heading': { en: 'Professional Experience', ar: 'الخبرة المهنية' },
                 'exp1-title': { en: 'AR Accountant I', ar: 'محاسب حسابات قبض I' },
                 'exp1-org': { en: 'Materials, Systems and Industrial Solutions Company (MSIS) · Saudi Arabia', ar: 'شركة المواد والأنظمة والحلول الصناعية (MSIS) · المملكة العربية السعودية' },
