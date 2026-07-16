@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ibrahim Sohail Dar · Accounting Consultancy</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ----- CSS variables (light theme, accessible contrast) ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #0a2e4b;      /* deep navy – high contrast */
+      --primary-light: #1c4b6e;
+      --accent: #b68b5c;        /* warm gold accent */
+      --accent-hover: #a07447;
+      --bg: #f8f7f4;
+      --card-bg: #ffffff;
+      --text-dark: #1e1e1e;
+      --text-muted: #2d3e4f;
+      --border-light: #dce1e6;
+      --shadow: 0 12px 28px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.03);
+      --radius: 20px;
+      --font-sans: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      --transition: 0.25s ease;
+    }
+
+    /* ----- base & reset ----- */
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 100dvw;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem 2.5rem;
+      transition: padding 0.2s;
+    }
+
+    /* ----- skip link (WCAG) ----- */
+    .skip-link {
+      position: absolute;
+      top: -1000px;
+      left: 1rem;
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      z-index: 100;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* ----- language toggle (WCAG: clear label) ----- */
+    .lang-toggle {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 2px solid var(--border-light);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      background: var(--card-bg);
+    }
+    .lang-btn[aria-pressed="true"] {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: white;
+    }
+    .lang-btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-light);
+      color: white;
+    }
+    .lang-btn:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* ----- header / profile ----- */
+    .profile-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 2rem;
+    }
+
+    .profile-avatar {
+      flex-shrink: 0;
+      width: 120px;
+      height: 120px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3.5rem;
+      font-weight: 600;
+      box-shadow: 0 6px 14px rgba(10, 46, 75, 0.15);
+    }
+
+    .profile-title h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--primary);
+      line-height: 1.2;
+    }
+    .profile-title .subhead {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .badge {
+      background: var(--accent);
+      color: #1e1e1e;
+      font-weight: 600;
+      padding: 0.15rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #0a66c2;
+      color: white;
+      padding: 0.3rem 1rem 0.3rem 0.9rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    .linkedin-link i {
+      font-size: 1.1rem;
+    }
+    .linkedin-link:hover {
+      background: #084a8f;
+      transform: scale(1.02);
+    }
+
+    /* ----- sections (WCAG: headings) ----- */
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+      border-left: 6px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-top: 0.8rem;
+    }
+
+    .card {
+      background: var(--bg);
+      padding: 1.8rem 1.5rem;
+      border-radius: 18px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    .card:hover {
+      border-color: var(--border-light);
+      background: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+    }
+    .card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.4rem;
+      color: var(--primary);
+    }
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* ----- about & bio (multilingual support) ----- */
+    .bio-text {
+      max-width: 780px;
+      font-size: 1.05rem;
+      background: var(--bg);
+      padding: 1.5rem 2rem;
+      border-radius: 20px;
+      border-left: 4px solid var(--accent);
+    }
+    .bio-text p + p {
+      margin-top: 0.8rem;
+    }
+
+    /* ----- contact & cta ----- */
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 2.5rem;
+      background: var(--bg);
+      padding: 1.6rem 2rem;
+      border-radius: 40px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      color: var(--text-dark);
+    }
+    .contact-item i {
+      font-size: 1.4rem;
+      color: var(--primary);
+      width: 1.8rem;
+      text-align: center;
+    }
+    .contact-item a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted transparent;
+      transition: var(--transition);
+    }
+    .contact-item a:hover {
+      border-bottom-color: var(--accent);
+    }
+
+    .cta-button {
+      background: var(--primary);
+      color: white;
+      padding: 0.7rem 2.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: var(--transition);
+      border: 2px solid var(--primary);
+    }
+    .cta-button:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-light);
+      transform: scale(1.02);
+    }
+    .cta-button i {
+      font-size: 1rem;
+    }
+
+    /* ----- footer ----- */
+    footer {
+      margin-top: 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-light);
+      padding-top: 2rem;
+    }
+
+    /* ----- RTL (Arabic) overrides ----- */
+    .lang-ar {
+      direction: rtl;
+    }
+    .lang-ar .profile-title h1 {
+      font-family: 'Segoe UI', 'Tahoma', sans-serif;
+    }
+    .lang-ar h2 {
+      border-left: none;
+      border-right: 6px solid var(--accent);
+      padding-left: 0;
+      padding-right: 1rem;
+    }
+    .lang-ar .bio-text {
+      border-left: none;
+      border-right: 4px solid var(--accent);
+    }
+    .lang-ar .contact-row {
+      flex-direction: row-reverse;
+    }
+    .lang-ar .card i {
+      /* no change, icons remain */
+    }
+    .lang-ar .profile-header {
+      flex-direction: row-reverse;
+    }
+    .lang-ar .lang-toggle {
+      justify-content: flex-start;
+    }
+
+    /* ----- responsive ----- */
+    @media (max-width: 700px) {
+      .container {
+        padding: 1.2rem;
+      }
+      .profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .profile-title h1 {
+        font-size: 2rem;
+      }
+      .contact-row {
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius: 28px;
+      }
+      .lang-ar .profile-header {
+        align-items: flex-end;
+      }
+      .lang-ar .contact-row {
+        align-items: flex-end;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 0.6rem;
+      }
+      .container {
+        padding: 0.8rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- WCAG skip link -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <div class="container" id="main-content" role="main">
+    <!-- language toggle (AR/EN) -->
+    <div class="lang-toggle" role="group" aria-label="Language selection">
+      <button class="lang-btn" id="lang-en" aria-pressed="true" lang="en">🇬🇧 English</button>
+      <button class="lang-btn" id="lang-ar" aria-pressed="false" lang="ar">🇸🇦 العربية</button>
+    </div>
+
+    <!-- ========== PROFILE ========== -->
+    <header class="profile-header">
+      <div class="profile-avatar" aria-hidden="true">ISD</div>
+      <div class="profile-title">
+        <h1 id="name-heading">Ibrahim Sohail Dar</h1>
+        <div class="subhead">
+          <span id="tagline">Accounting &amp; Financial Consultancy</span>
+          <span class="badge" id="location-badge">🇸🇦 Saudi Arabia</span>
+          <a href="https://www.linkedin.com/in/ibrahim-dar-b58b7822" target="_blank" rel="noopener noreferrer" class="linkedin-link" aria-label="LinkedIn profile (opens in new tab)">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========== ABOUT ========== -->
+    <section aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <div class="bio-text" id="bio-text">
+        <p id="bio-p1">Ibrahim Sohail Dar is a seasoned accounting consultant based in Saudi Arabia, with deep expertise in financial reporting, compliance, and strategic planning. He partners with businesses to streamline financial operations and drive sustainable growth.</p>
+        <p id="bio-p2">With a client-first approach and a strong commitment to transparency, Ibrahim helps organizations navigate complex financial landscapes — from SMEs to large enterprises.</p>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES ========== -->
+    <section aria-labelledby="services-heading">
+      <h2 id="services-heading">Core Services</h2>
+      <div class="card-grid">
+        <div class="card">
+          <i class="fas fa-file-invoice" aria-hidden="true"></i>
+          <h3 id="srv1-title">Financial Reporting</h3>
+          <p id="srv1-desc">IFRS-compliant statements, management reports, and performance analysis.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-balance-scale" aria-hidden="true"></i>
+          <h3 id="srv2-title">Compliance &amp; Audit</h3>
+          <p id="srv2-desc">Statutory audit support, ZATCA / VAT compliance, and internal controls.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-chart-line" aria-hidden="true"></i>
+          <h3 id="srv3-title">Strategic Advisory</h3>
+          <p id="srv3-desc">Budgeting, forecasting, and financial modelling for decision-making.</p>
+        </div>
+        <div class="card">
+          <i class="fas fa-handshake" aria-hidden="true"></i>
+          <h3 id="srv4-title">Business Setup</h3>
+          <p id="srv4-desc">Entity formation, licensing, and financial structuring in KSA.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT / CTA ========== -->
+    <section aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Get in touch</h2>
+      <div class="contact-row">
+        <div class="contact-item">
+          <i class="fas fa-envelope" aria-hidden="true"></i>
+          <a href="mailto:ibrahim.dar@consultant.com" id="email-link">ibrahim.dar@consultant.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone-alt" aria-hidden="true"></i>
+          <span id="phone-number">+966 50 123 4567</span>
+        </div>
+        <a href="#" class="cta-button" id="cta-btn" aria-label="Schedule a consultation">
+          <i class="fas fa-calendar-check" aria-hidden="true"></i> <span id="cta-text">Book a consultation</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p id="footer-text">© 2026 Ibrahim Sohail Dar · Accounting Consultancy, Saudi Arabia</p>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      "use strict";
+
+      // DOM refs
+      const langEn = document.getElementById('lang-en');
+      const langAr = document.getElementById('lang-ar');
+      const container = document.querySelector('.container');
+
+      // All translatable elements (id -> { en, ar })
+      const dict = {
+        'name-heading': { en: 'Ibrahim Sohail Dar', ar: 'إبراهيم سهيل دار' },
+        'tagline': { en: 'Accounting & Financial Consultancy', ar: 'الاستشارات المحاسبية والمالية' },
+        'location-badge': { en: '🇸🇦 Saudi Arabia', ar: '🇸🇦 المملكة العربية السعودية' },
+        'about-heading': { en: 'About', ar: 'نبذة' },
+        'bio-p1': { en: 'Ibrahim Sohail Dar is a seasoned accounting consultant based in Saudi Arabia, with deep expertise in financial reporting, compliance, and strategic planning. He partners with businesses to streamline financial operations and drive sustainable growth.', ar: 'إبراهيم سهيل دار هو مستشار محاسبي متمرس مقيم في المملكة العربية السعودية، يتمتع بخبرة عميقة في التقارير المالية والامتثال والتخطيط الاستراتيجي. يتعاون مع الشركات لتبسيط العمليات المالية ودفع النمو المستدام.' },
+        'bio-p2': { en: 'With a client-first approach and a strong commitment to transparency, Ibrahim helps organizations navigate complex financial landscapes — from SMEs to large enterprises.', ar: 'بفضل نهج يركز على العميل والتزام قوي بالشفافية، يساعد إبراهيم المؤسسات على اجتياز المشهد المالي المعقد — من الشركات الصغيرة والمتوسطة إلى المؤسسات الكبيرة.' },
+        'services-heading': { en: 'Core Services', ar: 'الخدمات الأساسية' },
+        'srv1-title': { en: 'Financial Reporting', ar: 'التقارير المالية' },
+        'srv1-desc': { en: 'IFRS-compliant statements, management reports, and performance analysis.', ar: 'قوائم متوافقة مع المعايير الدولية، تقارير إدارية، وتحليل الأداء.' },
+        'srv2-title': { en: 'Compliance & Audit', ar: 'الامتثال والتدقيق' },
+        'srv2-desc': { en: 'Statutory audit support, ZATCA / VAT compliance, and internal controls.', ar: 'دعم التدقيق القانوني، الامتثال للزكاة والضريبة والجمارك، والرقابة الداخلية.' },
+        'srv3-title': { en: 'Strategic Advisory', ar: 'الاستشارات الاستراتيجية' },
+        'srv3-desc': { en: 'Budgeting, forecasting, and financial modelling for decision-making.', ar: 'إعداد الميزانيات، التنبؤ، والنمذجة المالية لدعم القرارات.' },
+        'srv4-title': { en: 'Business Setup', ar: 'تأسيس الأعمال' },
+        'srv4-desc': { en: 'Entity formation, licensing, and financial structuring in KSA.', ar: 'تكوين الكيانات، التراخيص، والهيكلة المالية في المملكة.' },
+        'contact-heading': { en: 'Get in touch', ar: 'تواصل معنا' },
+        'email-link': { en: 'ibrahim.dar@consultant.com', ar: 'ibrahim.dar@consultant.com' },
+        'phone-number': { en: '+966 50 123 4567', ar: '+966 50 123 4567' },
+        'cta-text': { en: 'Book a consultation', ar: 'احجز استشارة' },
+        'footer-text': { en: '© 2026 Ibrahim Sohail Dar · Accounting Consultancy, Saudi Arabia', ar: '© 2026 إبراهيم سهيل دار · الاستشارات المحاسبية، المملكة العربية السعودية' }
+      };
+
+      // Set language
+      function setLanguage(lang) {
+        // update aria-pressed
+        langEn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+        langAr.setAttribute('aria-pressed', lang === 'ar' ? 'true' : 'false');
+
+        // update all translatable elements
+        for (const [id, translations] of Object.entries(dict)) {
+          const el = document.getElementById(id);
+          if (el) {
+            el.textContent = translations[lang] || translations.en;
+          }
+        }
+
+        // RTL class on container
+        if (lang === 'ar') {
+          container.classList.add('lang-ar');
+          document.documentElement.lang = 'ar';
+        } else {
+          container.classList.remove('lang-ar');
+          document.documentElement.lang = 'en';
+        }
+
+        // update email href (keep same)
+        const emailLink = document.getElementById('email-link');
+        if (emailLink) {
+          emailLink.href = 'mailto:ibrahim.dar@consultant.com';
+        }
+
+        // store preference
+        localStorage.setItem('preferred-lang', lang);
+      }
+
+      // Event listeners
+      langEn.addEventListener('click', function(e) {
+        setLanguage('en');
+      });
+      langAr.addEventListener('click', function(e) {
+        setLanguage('ar');
+      });
+
+      // Restore preference or default to 'en'
+      const stored = localStorage.getItem('preferred-lang');
+      if (stored === 'ar') {
+        setLanguage('ar');
+      } else {
+        setLanguage('en'); // default
+      }
+
+      // optional: cta button just shows alert for demo
+      document.getElementById('cta-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        alert('📅 Consultation booking form coming soon.\nFor now, please email or call Ibrahim.');
+      });
+
+    })();
+  </script>
+
+  <!-- small note: all WCAG contrast checked -->
+</body>
+</html>
